@@ -1,25 +1,34 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- added two script tags: -->
-    <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
-    <title>React Intro</title>
-</head>
-<body>
-    <!-- 
-    React.createElement has three main parameters:
-    1) tell React what kind of element we want to create, let's say an h1 tag
-    2) pass in props; for now just pass in an empty object, via {}
-    3) the children we want to include; tell React the items we want within our h1 tag 
-    -->
+    <head>
+        <meta charset="UTF-8">
+        <title>React Intro</title>
+    </head>
+    <body>
+        <!-- added this div tag -->
+        <div id="root">
+            <h1>First React page rendering...</h1>
+        </div>
 
-    const myReactComponent = React.createElement("h1", {}, "I am creating my first React component")
+        <!-- added two script tags: -->
+        <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
 
-    <!-- nested React Component: -->
-    const myNestedReactComponent = React.createElement("div", {}, React.createElement("p", {}, "This element is nested"))
+        <!-- 
+        React.createElement has three main parameters:
+        1) tell React what kind of element we want to create, let's say an h1 tag
+        2) pass in props; for now just pass in an empty object, via {}
+        3) the children we want to include; tell React the items we want within our h1 tag 
+        -->
 
-</body>
+        <script>
+            const myReactComponent = React.createElement("h1", {}, "I am creating my first React component")
+            ReactDOM.render(myReactComponent, document.getElementById("root"));
+        </script>
+
+        <!-- nested React Component: -->
+        <script>
+            const myNestedReactComponent = React.createElement("div", {}, React.createElement("p", {}, "This element is nested"))
+            ReactDOM.render(AmyNestedReactComponentpp, document.getElementById("root"));
+        </script>
+    </body>
 </html>
