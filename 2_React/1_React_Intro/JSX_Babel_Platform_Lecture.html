@@ -1,0 +1,50 @@
+<!-- 
+JSX = JavaScript Syntax Extension
+In order to make JSX work, we need to use a transpiler, named -- Babel.
+Babel is a transpiler that will turn JSX into JavaScript that browsers can understand.  
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JSX & Babel</title>
+    </head>
+    <body>
+        <div id="root">
+            <h1>Rendering...</h1>
+        </div>
+        
+        <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+
+        <!-- // Raw JavaScript (React.createElement) -->
+        <script>
+            const App = () => React.createElement("h1", {}, "Our First React page has rendered");
+            
+            /* 
+            LONGER VERSION:
+            const App = () => {
+                return React.createElement("h1", {}, "Our First React page has rendered");
+            }  
+            */
+
+            // Then we call the function that returns the element that we intend to render.
+            ReactDOM.render(App(), document.getElementById("root"));
+        </script>
+
+        <!-- JSX -> Babel -> Javascript -->
+        <script type="text/babel">
+            const App = () => <h1>Our First React page has rendered</h1>;
+            // Notice The difference in syntax. Here we've created a React Functional Component, named App which looks like regular HTML syntax
+            ReactDOM.render(<App></App>, document.getElementById("root"));
+            // Instead of the traditional way we are familiar with firing a function - App() - we wrap our function name in an HTML tag instead - <App />
+            // Because our <App></App> tag doesn't wrap anything, we can self close it:
+            ReactDOM.render(<App />, document.getElementById('root'));
+
+            // Notice the HTML syntax here. Although this may look like regular HTML, it's actually not. 
+            ReactDOM.render(<h1>Hello!</h1>, document.getElementById("root"));
+            // **Here is what the Babel translation looks like**
+            ReactDOM.render(React.createElement("h1", null, "Hello World"), document.getElementById("root"));
+        </script>
+    </body>
+</html>
