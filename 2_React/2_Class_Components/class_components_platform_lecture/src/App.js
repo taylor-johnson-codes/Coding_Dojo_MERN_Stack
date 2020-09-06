@@ -4,6 +4,7 @@ import MyNewComponent from './components/MyNewComponent';
 import Header from './components/Header';
 import MyNewChild from './components/MyNewChild';
 import LightSwitch from './components/LightSwitch';
+import MyButtonComponent from './components/MyButtonComponent';
 
 function App() {
   return (
