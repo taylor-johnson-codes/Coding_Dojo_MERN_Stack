@@ -49,5 +49,7 @@ class Header extends React.Component {
 <SomeComponent someProp={ "test" } someOtherProp={ 67 }/> 
 // Valid. A String is still a Javascript expression
 
-// <SomeComponent someProp="test" someOtherProp=67/> 
+/*
+<SomeComponent someProp="test" someOtherProp=67/>  
 // Invalid. Numbers need curly braces
+*/
