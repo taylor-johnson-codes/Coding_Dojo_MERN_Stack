@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import EventCard from './components/EventCard';
+import Form from './components/Form';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           description={"Hot rods!"}
         />
       </ul>
+
+      <Form/>
     </div>
   );
 }

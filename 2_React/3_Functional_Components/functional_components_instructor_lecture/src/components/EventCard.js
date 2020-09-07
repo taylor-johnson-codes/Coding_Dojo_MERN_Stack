@@ -14,17 +14,15 @@ const EventCard = props => {
     // taken from props and entered into state so it can be changed; props is read-only
 
     return (
-        <div>
-            <li>
-                <ul>
-                    <li>Event Name: {name}</li>
-                    <li>Event Date: {date}</li>
-                    <li>Number of Guests: {guests}</li>
-                    <li>Event Description: {description}</li>
-                    <li><button onClick={ () => setGuests(guests+1) }>Add Guest</button></li>
-                </ul>
-            </li>
-        </div>
+        <li>
+            <ul>
+                <li>Event Name: {name}</li>
+                <li>Event Date: {date}</li>
+                <li>Number of Guests: {guests}</li>
+                <li>Event Description: {description}</li>
+                <li><button onClick={ () => setGuests(guests+1) }>Add Guest</button></li>
+            </ul>
+        </li>
     )
 }
 
