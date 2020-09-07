@@ -11,16 +11,38 @@ const UserForm = (props) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");  
+    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
 
     const createUser = (e) => {
         e.preventDefault();
         const newUser = { username, email, password };
         console.log("Welcome", newUser);
+        setHasBeenSubmitted(true);
         setUsername("");  // set username back to an appropriate starting value
     };
 
+    /*  replaced with ternary operator in form section
+    const formMessage = () => {
+        if(hasBeenSubmitted) {
+            return "Thank you for submitting the form!";
+        } 
+        else {
+            return "Welcome, please submit the form.";
+        }
+    };
+    */
+
     return(
         <form onSubmit={ createUser }>
+            {/* <h3>{ formMessage() }</h3> */}
+
+            {
+                hasBeenSubmitted ?
+                <h3>Thank you for submitting the form!</h3>
+                :
+                <h3>Welcome, please submit the form.</h3>
+            }
+
             <div>
                 <label>Username: </label> 
                 <input type="text" onChange={ (e) => setUsername(e.target.value) } value={ username }/>
@@ -53,4 +75,33 @@ This event runs when the user submits the form by clicking on the submit button.
 accept an e parameter that is also full of event information. This time, we want to prevent the default form behavior 
 by using e.preventDefault(). The default form behavior is submitting the information to the route in the "action" 
 which causes a page load. We want to handle this information ourselves.
+*/
+
+
+/* VALIDATION EXAMPLE
+
+const handleUsername = e => {
+    setUsername(e.target.value);
+    if(e.target.value.length < 1){
+        setUsernameError("Username is required!");
+    }
+    else if(e.target.value.length < 3){
+        setUsernameError("Username must be at least 3 characters!");
+    }
+}
+
+return (
+        <form onsubmit={ (e) => e.preventDefault() }>
+            <div>
+                <label>Title: </label>
+                <input type="text" onChange={ handleTitle } />
+                {
+                    titleError ?
+                    <p style={{color:'red'}}>{ titleError }</p> :
+                    ''
+                }
+            </div>
+            <input type="submit" value="Create Movie" />
+        </form>
+    );
 */
