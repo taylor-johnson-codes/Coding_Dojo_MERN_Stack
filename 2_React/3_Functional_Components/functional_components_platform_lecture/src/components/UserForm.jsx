@@ -76,32 +76,3 @@ accept an e parameter that is also full of event information. This time, we want
 by using e.preventDefault(). The default form behavior is submitting the information to the route in the "action" 
 which causes a page load. We want to handle this information ourselves.
 */
-
-
-/* VALIDATION EXAMPLE
-
-const handleUsername = e => {
-    setUsername(e.target.value);
-    if(e.target.value.length < 1){
-        setUsernameError("Username is required!");
-    }
-    else if(e.target.value.length < 3){
-        setUsernameError("Username must be at least 3 characters!");
-    }
-}
-
-return (
-        <form onsubmit={ (e) => e.preventDefault() }>
-            <div>
-                <label>Title: </label>
-                <input type="text" onChange={ handleTitle } />
-                {
-                    titleError ?
-                    <p style={{color:'red'}}>{ titleError }</p> :
-                    ''
-                }
-            </div>
-            <input type="submit" value="Create Movie" />
-        </form>
-    );
-*/
