@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react'
 import './App.css';
 import EventCard from './components/EventCard';
 import Form from './components/Form';
 
 function App() {
+  const [event, setEvent] = useState({
+    name: '',
+    date: '',
+    guests: 0,
+    description: ''
+  });
+
   return (
     <div>
       <ul>
@@ -22,7 +29,8 @@ function App() {
         />
       </ul>
 
-      <Form/>
+      <Form newEvent={event} setNewEvent={setEvent}/>
+      {/* sending state to Form via props */}
     </div>
   );
 }
