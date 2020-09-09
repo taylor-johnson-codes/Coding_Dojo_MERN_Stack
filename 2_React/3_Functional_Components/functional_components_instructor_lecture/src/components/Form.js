@@ -2,9 +2,13 @@ import React, {useState} from 'react'
 import EventCard from './EventCard'
 
 const Form = props => {
-    const {newEvent, setNewEvent} = props;
+    const {newEvent, setNewEvent, formSubmit} = props;
+    // React props is packaged as a single object
+    // state NOT being defined here, it's defined in App.js
 
-    const [submitted, setSubmitted] = useState(false);
+    const [submitted, setSubmitted] = useState(false);  
+    // How useState is defined in React: an array with 2 things: how to access state, method to update state
+    // state IS being defined here
 
     const changeHandler = e => {
         setSubmitted(false);
@@ -16,15 +20,7 @@ const Form = props => {
 
     const submitHandler = e => {
         e.preventDefault();  // stops page from reloading
-        
-        // clear the event in form and add a message:
-        setNewEvent({
-            name: '',
-            date: '',
-            guests: 0,
-            description: ''
-        });
-
+        formSubmit();  // will run the function in App.js
         setSubmitted(true);
     }
 
