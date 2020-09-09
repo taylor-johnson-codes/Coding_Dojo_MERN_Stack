@@ -33,7 +33,9 @@ function App() {
     */
   
   const guestAdd = (i) => {
-    console.log("Hello!");
+    const events = allEvents;  // makes copy of allEvents from state 
+    events[i].guests++;  // so we can pick a specific one and increment its guests
+    setAllEvents(events);  // and set it back into state
   }
 
   return (
@@ -43,7 +45,7 @@ function App() {
         {
           allEvents.map((ev, i) => 
           <EventCard
-            key={i}  // add this key any time using .map to avoid red warning in browser console
+            key={i}  // add this key any time using .map to avoid red warning in browser console (key is specific to .map)
             index={i}  // adding because key doesn't pass as prop and we need i
             event={ev}
             guestAdd={guestAdd}
