@@ -2,7 +2,8 @@
 // rafce = react arrow function component with export
 
 import React, {useState} from 'react'
-import EventCard from './EventCard'
+
+// The whole thing below is a function so it doesn't have a constructor because constructors are for classes, not functions
 
 const Form = props => {
     const {newEvent, setNewEvent, formSubmit} = props;
@@ -36,9 +37,6 @@ const Form = props => {
                     :
                     ''  // if false (can't have nothing after colon)
             }
-
-            {/* taking info from state and passing it to EventCard */}
-            {/* <EventCard name={event.name} date={event.date} guests={event.guests} description={event.description}/> */}
 
             {/* Don't want to redirect form with an action because we don't want the page to reload */}
             <form onSubmit={submitHandler}>

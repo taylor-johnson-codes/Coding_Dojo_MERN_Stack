@@ -7,12 +7,13 @@ import React, { useState } from 'react'
 
 const EventCard = props => {
     const {index, event, guestAdd} = props;
-    const {name, date, guests, description} = event;
+    const {name, date, guests, description} = event;  // this is breaking down event even further after bringing it in in the line above
 
     return (
         <li>
             <ul>
                 <li>Event Name: {name}</li>
+                {/* if we didn't bring in the two const lines above, name would be props.event.name */}
                 <li>Event Date: {date}</li>
                 <li>Number of Guests: {guests}</li>
                 <li>Event Description: {description}</li>

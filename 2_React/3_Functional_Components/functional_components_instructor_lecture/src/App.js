@@ -33,7 +33,7 @@ function App() {
     */
   
   const guestAdd = (i) => {
-    const events = allEvents;  // makes copy of allEvents from state 
+    const [...events] = allEvents;  // makes copy of allEvents from state 
     events[i].guests++;  // so we can pick a specific one and increment its guests
     setAllEvents(events);  // and set it back into state
   }
@@ -41,22 +41,24 @@ function App() {
   return (
     <div>
       {/* map is an alternative to a for loop; .map can only called on iterative things likr arrays */}
+      {/* .map takes two parameters: value and index */}
+      {/* .map is always used with an arrow function */}
       <ul>
         {
-          allEvents.map((ev, i) => 
+          allEvents.map((ev, i) =>
           <EventCard
             key={i}  // add this key any time using .map to avoid red warning in browser console (key is specific to .map)
             index={i}  // adding because key doesn't pass as prop and we need i
             event={ev}
             guestAdd={guestAdd}
             
+            // if not sending the whole event thru, can do this instead:
             // name={ev.name}
             // date={ev.date}
             // guests={ev.guests}
             // description={ev.description}
           />
           )
-          // .map takes two parameters: value and index
         }
       </ul>
 
