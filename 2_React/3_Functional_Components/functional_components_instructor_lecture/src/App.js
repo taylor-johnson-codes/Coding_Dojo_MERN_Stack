@@ -6,6 +6,7 @@ import Form from './components/Form';
 function App() {
   const [allEvents, setAllEvents] = useState([]);
 
+  // useState has a snippet: const [state, setstate] = useState(initialState)
   const [event, setEvent] = useState({
     name: '',
     date: '',
@@ -30,6 +31,10 @@ function App() {
     events.push(event);
     setAllEvents(events);
     */
+  
+  const guestAdd = (i) => {
+    console.log("Hello!");
+  }
 
   return (
     <div>
@@ -38,10 +43,15 @@ function App() {
         {
           allEvents.map((ev, i) => 
           <EventCard
-            name={ev.name}
-            date={ev.date}
-            guests={ev.guests}
-            description={ev.description}
+            key={i}  // add this key any time using .map to avoid red warning in browser console
+            index={i}  // adding because key doesn't pass as prop and we need i
+            event={ev}
+            guestAdd={guestAdd}
+            
+            // name={ev.name}
+            // date={ev.date}
+            // guests={ev.guests}
+            // description={ev.description}
           />
           )
           // .map takes two parameters: value and index

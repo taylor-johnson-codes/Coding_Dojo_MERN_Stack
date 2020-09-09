@@ -1,3 +1,6 @@
+// With ES7 React extension, can use rafce snippet
+// rafce = react arrow function component with export
+
 import React, {useState} from 'react'
 import EventCard from './EventCard'
 
