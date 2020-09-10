@@ -14,7 +14,6 @@ const MovieForm = (props) => {
         }
     }
 
-    {/* rest of component removed for brevity */}
 
     return (
         <form onsubmit={ (e) => e.preventDefault() }>
@@ -30,4 +29,17 @@ const MovieForm = (props) => {
             <input type="submit" value="Create Movie" />
         </form>
     );
+}
+
+
+
+// example of passing two args to the onClickHandler
+const MyComponent = props => {
+    const onClickHandler = (e, value) => {
+        alert(value);
+    }
+
+    return props.movies.map((item, index) => {
+        return <button onClick={(e) => onClickHandler(e, item)}>{item}</button>
+    });
 }
