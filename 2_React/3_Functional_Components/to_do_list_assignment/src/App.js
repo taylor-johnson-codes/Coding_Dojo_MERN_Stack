@@ -8,8 +8,8 @@ function App() {
 
   return (
     <div>
-      {list.map(task => (
-        <Task task={task} setList={setList}/>
+      {list.map((task, i) => (
+        <Task task={task} setList={setList} index={i} list={list}/>
       ))}
       <Input list={list} setList={setList}/>
     </div>

@@ -15,13 +15,12 @@ const Input = (props) => {
     const onClick = (e) => {
         setList([...list, task])  // adding the new object item to the end of an existing array of objects
         e.target.value = "";  // clears out data after submission; clean-up
-        task = "";
     };
 
     return (
         <div className="container">
             <input type="text" name="task" onChange={onChange}/>
-            <button className="btn btn-primary" type="submit" onClick={onClick}>Add</button>
+            <button className="btn btn-primary" type="submit" onClick={onClick}>Add Task</button>
         </div>
     )
 }
