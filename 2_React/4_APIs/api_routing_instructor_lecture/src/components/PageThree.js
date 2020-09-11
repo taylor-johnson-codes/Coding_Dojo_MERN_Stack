@@ -11,7 +11,7 @@ const PageThree = (props) => {
         if(isNaN(thing)){
             navigate('/');
         }
-    }, [thing])
+    }, [])
 
     return (
         <div>
