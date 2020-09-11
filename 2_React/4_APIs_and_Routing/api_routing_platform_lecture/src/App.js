@@ -1,5 +1,14 @@
+// React Router and Reach Router are 3rd party libraries; we're using Reach Router
+// install in terminal: npm install @reach/router
+
+// a <Link> component will not refresh the page. It will simply change the url and change the DOM.
+
+// use navigate to redirect a user to another page
+
 import React from 'react';
 import './App.css';
+import { Router, Link, navigate } from "@reach/router";
+import DetailDogComponent from './components/DetailDogComponent';
 
 function App() {
   /*
@@ -11,9 +20,21 @@ function App() {
     })
   */
 
+  const onClickHandler = e => {
+    naviagte('/');
+  }
+
   return (
     <div>
+      <Router>
+        <LoginComponent path="/login" />
+        <DashboardComponent path="/dashboard" />
+        {/* These tell React that when we go to the path /login, we want to update the DOM so that it shows the LoginComponent within the <Router> component wrapper. */}
+        <ListOfDogsComponent path="/dogs" />
+        <DetailDogComponent path="/dogs/:id" />
+      </Router>
 
+      <Link to="/">Main Page</Link>
     </div>
   );
 }
