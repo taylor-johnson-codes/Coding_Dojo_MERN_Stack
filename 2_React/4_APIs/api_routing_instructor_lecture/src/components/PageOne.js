@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { navigate } from '@reach/router';
 
 const PageOne = () => {
+    const [thing, setThing] = useState("");
+
+    const submitHandler = e => {
+        e.preventDefault();  // all forms should have this
+        navigate(`/pagethree/${thing}`);
+    }
+
     return (
         <div>
             <h2>This is the PageOne component</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, nostrum! Repellat beatae, praesentium delectus quo ea dolorum tenetur corporis voluptates. Maxime consequuntur ratione repellendus, incidunt doloremque quidem error molestias qui.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <form onSubmit={submitHandler}>
+                <input type="text" onChange={e => setThing(e.target.value)}/>
+                <br/>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import Axios from 'axios';
 import {Router, Link, navigate} from '@reach/router';
 import PageOne from './components/PageOne';
 import PageTwo from './components/PageTwo';
+import PageThree from './components/PageThree';
 
 function App() {
   // const [pokemonName, setPokemonName] = useState("");  // start the state of pokemonName as an empty string
@@ -60,10 +61,13 @@ function App() {
 
       {/* import Router at top */}
       <Router>
-        <PageOne path="/" />
         {/* this will show PageOne at the base route of localhost:3000 */}
-        <PageTwo path="/pagetwo" />
+        <PageOne path="/" />
         {/* this will show PageTwo at the route of localhost:3000/pagetwo */}
+        <PageTwo path="/pagetwo" />
+        {/* route parameters i.e. user_id, i.e. details page */}
+        {/* colon automatically puts the parameter into props */}
+        <PageThree path="pagethree/:thing"/>
       </Router>
 
       {/* showing ablility to navigate to another page from another function */}
