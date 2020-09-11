@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Axios from 'axios';
-import {Router} from '@reach/router';
+import {Router, Link, navigate} from '@reach/router';
 import PageOne from './components/PageOne';
 import PageTwo from './components/PageTwo';
 
@@ -39,6 +39,10 @@ function App() {
   }, [])  // leave second parameter (an array) of useEffect function empty if I want this to fire just the first time we get here
   */
 
+  const changePlaces = () => {
+    navigate('/pagetwo');
+  }
+
   return (
     <div>
       {success ? (
@@ -47,6 +51,13 @@ function App() {
         <h1>An unexpected error has occurred.</h1>
       )}
 
+      {/* This reloads the page which we don't want: */}
+      {/* <a href="/">Page One</a> | <a href="/pagetwo">Page Two</a> */}
+
+        {/* Doesn't reload; maintains Single Page App */}
+      <Link to="/">Page One</Link> | <Link to="/pagetwo">Page Two</Link>
+
+
       {/* import Router at top */}
       <Router>
         <PageOne path="/" />
@@ -54,6 +65,10 @@ function App() {
         <PageTwo path="/pagetwo" />
         {/* this will show PageTwo at the route of localhost:3000/pagetwo */}
       </Router>
+
+      {/* showing ablility to navigate to another page from another function */}
+      <button onClick={changePlaces}>Change Places</button>
+
     </div>
   );
 }
