@@ -5,17 +5,11 @@ const SearchBar = (props) => {
     const [search, setSearch] = useState("");
     const [id, setId] = useState("");
 
-    const searchHandler = (e) => {
-        setSearch(e.target.value);
-    }
-
-    const idHandler = (e) => {
-        setId(e.target.value);
-    }
-
     const submitForm = (e) => {
         e.preventDefault();
         navigate(`/${search}/${id}`);
+        setSearch("");
+        setId("");
     }
 
     return (
@@ -23,15 +17,14 @@ const SearchBar = (props) => {
             <form onSubmit={submitForm}>
                 <div>
                     <label>Search for: </label>
-                    <select value={search} onChange={searchHandler}>
+                    <select value={search} onChange={ (e) => setSearch(e.target.value) }>
                         <option value="people">people</option>
                         <option value="planets">planets</option>
                     </select>
                 </div>
                 <div>
                     <label>ID: </label>
-                    {/* <input type="text" value={id} onChange={idHandler} /> */}
-                    <select value={id} onChange={idHandler}>
+                    <select value={id} onChange={ (e) => setId(e.target.value) }>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
