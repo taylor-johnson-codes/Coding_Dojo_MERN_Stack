@@ -3,19 +3,19 @@ const Joke = require("../models/models");
 
 module.exports = {
     allJokes: (req, res) => {
-        Joke.
+        Joke.find()
         .then((data) => res.json(data))
         .catch((err) => res.json(err));
     },
 
     singleJoke: (req, res) => {
-        Joke.
+        Joke.findOne({ _id: req.params.id })
         .then((data) => res.json(data))
         .catch((err) => res.json(err));
     },
 
     randomJoke: (req, res) => {
-        Joke.
+        Joke.aggregate({ $sample: {size: 1} })
         .then((data) => res.json(data))
         .catch((err) => res.json(err));
     },
@@ -27,13 +27,13 @@ module.exports = {
     },
 
     updateJoke: (req, res) => {
-        Joke.
+        Joke.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }, { runValidators: true, useFindAndModify: false })
         .then((data) => res.json(data))
         .catch((err) => res.json(err));
     },
 
     deleteJoke: (req, res) => {
-        Joke.
+        Joke.findOneAndDelete({ _id: req.params.id })
         .then((data) => res.json(data))
         .catch((err) => res.json(err));
     },

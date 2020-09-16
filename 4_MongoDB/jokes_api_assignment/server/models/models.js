@@ -1,34 +1,17 @@
 const mongoose = require("mongoose");
 
 const JokeSchema = new mongoose.Schema({
-    name: {
-        type: String, // data types must be capitalized
-        required: true,
-        minlength: 2, // will return generic error message
-        maxlength: [30, "Name must be less than 30 characters."],
-        // default: ""
-    },
-
-    age: {
-        type: Number,
-        required: true,
-        min: 13,
-    },
-
-    email: {
+    setup: {
         type: String,
         required: true,
-        // custom validation:
-        validate: {
-            validator: (value) => {
-                // code for validating (i.e. run regex check)
-                // return bool based on code above (i.e. return result of regex check)
-                let re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-                return re.test(value);
-            },
-            message: "Invalid email address!",
-        },
+        minlength: [10, "Must be at least 30 characters long."],
     },
+
+    punchline: {
+        type: String,
+        required: true,
+        minlength: [3, "Must be at least 3 characters long."],
+    }
 }, { timestamps: true })
 
 const Joke = mongoose.model("Joke", JokeSchema);
