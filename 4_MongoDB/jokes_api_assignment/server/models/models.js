@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const TestSchema = new mongoose.Schema({
+const JokeSchema = new mongoose.Schema({
     name: {
         type: String, // data types must be capitalized
         required: true,
@@ -31,6 +31,6 @@ const TestSchema = new mongoose.Schema({
     },
 }, { timestamps: true })
 
-const Test = mongoose.model("Test", TestSchema);
+const Joke = mongoose.model("Joke", JokeSchema);
 
-module.exports = Test;
+module.exports = Joke;
