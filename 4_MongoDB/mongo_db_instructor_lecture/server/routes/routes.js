@@ -1,8 +1,16 @@
 const controller = require("../controllers/controller");
 
 module.exports = app => {
-    // app.get("/api", controller.generic);
-    // app.post("/api", controller.newData);
+    // Create
     app.post('/api', controller.create);
-    app.get('/api', controller.findAll())  // gets all data from DB
+
+    // Read
+    app.get('/api', controller.findAll());
+    app.get('/api/:id', controller.find());
+
+    // Update
+    app.patch('/api/:id', controller.update());
+
+    // Delete
+    app.delete('/api/:id', controller.delete());
 }
