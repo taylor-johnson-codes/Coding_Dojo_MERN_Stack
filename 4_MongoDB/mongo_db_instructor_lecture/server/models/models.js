@@ -8,7 +8,8 @@ const TestSchema = new mongoose.Schema({
     name: {
         type: String,  // data types must be capitalized
         required: true,
-        minlength: 2,
+        minlength: 2,  // will return generic error message
+        maxlength: [30, "Name must be less than 30 characters."]  // will return this custom error message
         // default: ""
     },
     age: {
