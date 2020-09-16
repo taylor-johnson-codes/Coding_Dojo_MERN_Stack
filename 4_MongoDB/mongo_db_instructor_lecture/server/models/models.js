@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const TestSchema = new mongoose.Schema({
     // without validations:
     // name: String
+    // age: Number
 
     // with validations:
     name: {
@@ -42,6 +43,6 @@ module.exports = Test;
 module.exports = {
     Test,
     Model2,
-    Model3
+    Model3,
 }
 */

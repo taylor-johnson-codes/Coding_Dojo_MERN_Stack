@@ -6,18 +6,14 @@ module.exports = {
         // if using shell: db.demo_db.insert(...)
         // Test.create({ name: "Taylor", age: 101, email: "taylor@email.com" })
         Test.create(req.body)  // req.body is how we get info submitted thru a form
-            .then(data => {
-                res.json(data);  // data is the newly created object in DB
-            })
-            // .catch(err => console.log(err));
+            .then(data => res.json(data))  // data is the newly created object in DB
             .catch(err => res.json(err));
+            // .catch(err => console.log(err));
     },
 
     findAll: (req, res) => {
         Test.find({})
-            .then(data => {
-                res.jason(data);
-            })
+            .then(data => res.json(data))
             .catch(err => res.json(err));
     },
 
@@ -27,7 +23,7 @@ module.exports = {
         // _id is automatically put on every document created in the DB
         // params.id comes from what we're passing thru in the URL in routes.js
             .then(data => res.json(data))
-            .catch(err => res.json(err))
+            .catch(err => res.json(err));
     },
 
     update: (req, res) => {
@@ -41,11 +37,13 @@ module.exports = {
         })
         */
         .then(data => res.json(data))
-        .catch(err => res.json(err))
+        .catch(err => res.json(err));
     },
 
     delete: (req, res) => {
-        Test.deleteOne
-        Test.deleteMany
+        Test.findOneAndDelete({ _id: req.params.id })
+        // returns object deleted from DB but it still deleted it
+        .then((data) => res.json(data))
+        .catch((err) => res.json(err));
     }
 }
