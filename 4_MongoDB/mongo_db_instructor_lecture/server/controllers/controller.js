@@ -4,10 +4,6 @@ const Test = require('../models/models');
 module.exports = { 
     // generic: (req, res) => {
     //     res.json({ message: "success", data: [1, 2, 3] });
-    // },
-    // newData: (req, res) => {
-    //     console.log(req.body);
-    //     res.json({ message: "success", data: req.body });
     // }
 
     create: (req, res) => {
@@ -18,6 +14,14 @@ module.exports = {
                 res.json(data);  // data is the newly created object in DB
             })
             // .catch(err => console.log(err));
+            .catch(err => res.json(err));
+    },
+
+    findAll: (req, res) => {
+        Test.find({})
+            .then(data => {
+                res.jason(data);
+            })
             .catch(err => res.json(err));
     }
 }
