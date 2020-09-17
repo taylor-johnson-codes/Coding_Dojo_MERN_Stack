@@ -1,36 +1,27 @@
 const mongoose = require("mongoose");
 
-const TestSchema = new mongoose.Schema({
-    name: {
-        type: String, // data types must be capitalized
-        required: true,
-        minlength: 2, // will return generic error message
-        maxlength: [30, "Name must be less than 30 characters."],
-        // default: ""
-    },
-
-    age: {
-        type: Number,
-        required: true,
-        min: 13,
-    },
-
-    email: {
+const ProductSchema = new mongoose.Schema({
+    title: {
         type: String,
         required: true,
-        // custom validation:
-        validate: {
-            validator: (value) => {
-                // code for validating (i.e. run regex check)
-                // return bool based on code above (i.e. return result of regex check)
-                let re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-                return re.test(value);
-            },
-            message: "Invalid email address!",
-        },
+        minlength: [2, "Must be more than 2 characters."],
+        maxlength: [30, "Must be less than 30 characters."],
     },
+
+    price: {
+        type: Number,
+        required: true,
+        min: [0, "Minimum price is 0."]
+    },
+
+    description: {
+        type: String,
+        required: true,
+        minlength: [2, "Must be more than 2 characters."],
+        maxlength: [50, "Must be less than 50 characters."],
+    }
 }, { timestamps: true })
 
-const Test = mongoose.model("Test", TestSchema);
+const Product = mongoose.model("Product", ProductSchema);
 
-module.exports = Test;
+module.exports = Product;
