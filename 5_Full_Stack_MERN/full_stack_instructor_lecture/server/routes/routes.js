@@ -8,7 +8,6 @@ module.exports = (app) => {
     app.get("/api/test", controller.getAll);
     app.get("/api/test/:id", controller.getOne);
 
-
     // U
     app.patch("/api/test/:id", controller.updateOne);
     // OR
