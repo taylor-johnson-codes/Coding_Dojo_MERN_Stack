@@ -10,8 +10,26 @@ const NewThing = (props) => {
         email: ''
     })
 
+    const [errors, setErrors] = useState({
+        name: {},
+        email: {}
+    })
+
     const submitHandler = e => {
         e.preventDefault();
+        // checking on backend post request response before deciding what to do
+        // fire post request:
+        axios.post("http://localhost:8000/api/test", thing)
+            .then(res => {
+                if(res.data.errors){
+                    // console.log(res.data.errors);
+                    setErrors(res.data.errors);
+                }
+                else{
+                    navigate('/all');
+                }
+            })
+            .catch(err => console.log(err));
     }
 
     const changeHandler = e => {
@@ -25,9 +43,21 @@ const NewThing = (props) => {
         <div>
             <Link to="/all">Go Back to All Things</Link>
             <form onSubmit={submitHandler}>
+                {
+                    errors.name ?
+                    <p>{errors.name.message}</p>
+                    : ''
+                    
+                }
                 <label htmlFor="name">Name: </label>
                 <input type="text" name="name" onChange={changeHandler}/>
                 <br/>
+                {
+                    errors.email ?
+                    <p>{errors.email.message}</p>
+                    : ''
+                    
+                }
                 <label htmlFor="email">Email: </label>
                 <input type="text" name="email" onChange={changeHandler}/>
                 <br/>
