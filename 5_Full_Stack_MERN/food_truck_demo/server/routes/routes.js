@@ -2,6 +2,7 @@ const controller = require("../controllers/controller");
 
 module.exports = (app) => {
     app.post("/api/trucks", controller.createTruck);
+    // app.get("/api/trucks/all", controller.allTrucks);
     app.get("/api/trucks", controller.allTrucks);
     app.get("/api/trucks/:id", controller.oneTruck);
     app.patch("/api/trucks/:id", controller.updateTruck);

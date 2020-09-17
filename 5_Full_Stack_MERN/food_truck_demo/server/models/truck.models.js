@@ -29,15 +29,4 @@ const TruckSchema = new mongoose.Schema({
 
 const Truck = mongoose.model("Truck", TruckSchema);
 
-// TruckSchema.pre('validate', function(next) {
-//     Truck.find({ 'reviews.name': this.name })
-//         .then(data => {
-//             if (data != null) {
-//                 this.invalidate('name', 'A review with that name already exists.')
-//             }
-//             next();
-//         })
-//         .catch(err => this.invalidate('name', 'Something went wrong.'));
-// })
-
-module.exports = Truck;
+module.exports = {Truck}
