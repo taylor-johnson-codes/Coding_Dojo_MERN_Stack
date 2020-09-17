@@ -5,6 +5,4 @@ mongoose.connect("mongodb://localhost/product_manager_DB", {
     useUnifiedTopology: true,
 })
     .then(() => console.log("Connection to DB has been established!"))
-    .catch((err) =>
-        console.log("Error occurred when attempting to connect to DB: ", err)
-    );
+    .catch(err => console.log("Error occurred when attempting to connect to DB: ", err));
