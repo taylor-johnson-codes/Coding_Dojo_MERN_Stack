@@ -6,5 +6,5 @@ module.exports = (app) => {
     app.get("/api/trucks/:id", controller.oneTruck);
     app.patch("/api/trucks/:id", controller.updateTruck);
     app.patch("/api/trucks/review/:id", controller.addReview);
-    app.delete("/api/trucks/:id", controller.deleteOne);
+    app.delete("/api/trucks/:id", controller.deleteTruck);
 };

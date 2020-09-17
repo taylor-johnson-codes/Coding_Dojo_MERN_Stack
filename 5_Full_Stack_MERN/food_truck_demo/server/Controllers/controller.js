@@ -33,12 +33,19 @@ module.exports = {
     },
 
     addReview: (req, res) => {
-        Truck.
-            .then(data => res.json(data))
+        Truck.findOne({ _id: req.params.id, 'reviews.name': req.body.name })
+            .then(data => {
+                if(data == null){
+                    Truck.findOneAndUpdate({ _id: req.params.id }, { $addToSet: { reviews: req.body } }, { new: true, runValidators: true, useFindAndModify: false })
+                        .then(data => res.json(data))
+                } else{
+                    res.status(500).json({ error: 'Name already used for another review on this truck'});
+                }
+            })
             .catch(err => res.json(err));
     },
 
-    deleteOne: (req, res) => {
+    deleteTruck: (req, res) => {
         Truck.findOneAndDelete({ _id: req.params.id })
             .then(data => res.json(data))
             .catch(err => res.json(err));
