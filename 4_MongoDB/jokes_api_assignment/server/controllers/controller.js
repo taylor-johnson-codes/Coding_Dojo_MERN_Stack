@@ -8,7 +8,7 @@ module.exports = {
     },
 
     singleJoke: (req, res) => {
-        Joke.findOne({ _id: req.params.id })
+        Joke.findOne({ _id: req.params._id })
         .then((data) => res.json(data))
         .catch((err) => res.json(err));
     },
@@ -26,7 +26,7 @@ module.exports = {
     },
 
     updateJoke: (req, res) => {
-        Joke.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }, { runValidators: true, useFindAndModify: false })
+        Joke.findOneAndUpdate({ _id: req.params._id }, { $set: req.body }, { runValidators: true, useFindAndModify: false })
         .then((data) => res.json(data))
         .catch((err) => res.json(err));
     },
