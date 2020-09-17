@@ -11,8 +11,8 @@ const NewThing = (props) => {
     })
 
     const [errors, setErrors] = useState({
-        name: {},
-        email: {}
+        name: '',
+        email: ''
     })
 
     const submitHandler = e => {
