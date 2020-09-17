@@ -24,5 +24,31 @@ module.exports = {
             .catch(err => res.json(err));
     },
 
+    getOne: (req, res) => {
+        Test.findOne({ _id: req.params.id })
+            .then(data => res.json(data))
+            .catch(err => res.json(err));
+            /*
+            .catch(err => {
+                if(err.kind == "ObjectId"){
+                    res.json({ message: "An object with that ID doesn't exist in the DB." });
+                }
+                else{
+                    res.json(err);
+                }
+            })
+            */
+    },
 
-};
+    updateOne: (req, res) => {
+        Test.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true, useFindAndModify: false})
+            .then(data => res.json(data))
+            .catch(err => res.json(err));
+    },
+
+    deleteOne: (req, res) => {
+        Test.findOneAndDelete({ _id: req.params.id })
+            .then(data => res.json(data))
+            .catch(err => res.json(err));
+    }
+}
