@@ -34,7 +34,7 @@ const AllProducts = (props) => {
                     {allProducts.map((item, i) => (
                     <tr key={i}>
                         <td>{item.title}</td>
-                        <td>{item.price}</td>
+                        <td>${item.price}</td>
                         <td>{item.description}</td>
                     </tr>
                     ))}

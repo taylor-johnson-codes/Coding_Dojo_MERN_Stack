@@ -23,10 +23,12 @@ const ProductForm = (props) => {
                     setErrors(res.data.errors);
                 }
                 else {
-                    navigate('/all');
+                    navigate('/');
                 }
             })
             .catch(err => console.log(err));
+        setProduct({title: '', price: '', description: ''});
+        setErrors({title: '', price: '', description: ''});
     }
 
     const changeHandler = e => {
@@ -48,7 +50,7 @@ const ProductForm = (props) => {
 
                 }
                 <label htmlFor="title">Title: </label>
-                <input type="text" name="title" onChange={changeHandler} />
+                <input type="text" name="title" onChange={changeHandler} value={product.title} />
                 <br />
                 {
                     errors.price ?
@@ -57,7 +59,7 @@ const ProductForm = (props) => {
 
                 }
                 <label htmlFor="price">Price: $ </label>
-                <input type="text" name="price" onChange={changeHandler} />
+                <input type="text" name="price" onChange={changeHandler} value={product.price}/>
                 <br />
                 {
                     errors.description ?
@@ -66,7 +68,7 @@ const ProductForm = (props) => {
 
                 }
                 <label htmlFor="description">Description: </label>
-                <input type="text" name="description" onChange={changeHandler} />
+                <input type="text" name="description" onChange={changeHandler} value={product.description}/>
                 <br />
                 <button type="submit">Add Product</button>
             </form>

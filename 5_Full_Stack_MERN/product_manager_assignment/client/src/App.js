@@ -9,7 +9,9 @@ function App() {
     <div>
       <Router>
         <ProductForm path="/" />
+      </Router>
         <hr />
+      <Router>
         <ProductList path="/" />
       </Router>
     </div>
