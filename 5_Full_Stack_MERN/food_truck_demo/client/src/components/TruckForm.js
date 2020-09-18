@@ -2,7 +2,7 @@ import React from 'react'
 import {navigate} from '@reach/router'
 
 const TruckForm = (props) => {
-    const { truck, changeHandler, errors, action } = props;
+    const { truck, changeHandler, errors, action, deleteHandler } = props;
 
     return (
         <>
@@ -40,7 +40,7 @@ const TruckForm = (props) => {
                 {
                     action === "edit" ?
                     <>
-                        <button type="button" className="offset-sm-6 col-sm-2">Delete</button>
+                        <button type="button" onClick={ deleteHandler } className="offset-sm-6 col-sm-2 btn btn-danger">Delete</button>
                         <button type="button" onClick={ () => navigate('/') } className="col-sm-2 btn btn-secondary">Cancel</button>
                         <button type="submit" className="col-sm-2 btn btn-primary">Update</button>
                     </>

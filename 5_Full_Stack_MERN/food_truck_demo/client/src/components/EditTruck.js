@@ -44,11 +44,17 @@ const EditTruck = (props) => {
         });
     }
 
+    const deleteHandler = () => {
+        axios.delete('http://localhost:8000/api/trucks/${props.id}')
+        .then(res => navigate('/'))
+        .catch(err => console.log(err));
+    }
+
     return (
         <div>
             <h2>Edit Food Truck</h2>
             <form onSubmit={submitHandler}>
-                <TruckForm truck={truck} changeHandler={changeHandler} errors={errors} action="edit" />
+                <TruckForm truck={truck} changeHandler={changeHandler} errors={errors} deleteHandler={deleteHandler} action="edit" />
             </form>
         </div>
     )

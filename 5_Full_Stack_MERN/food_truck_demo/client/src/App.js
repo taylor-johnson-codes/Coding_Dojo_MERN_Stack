@@ -4,6 +4,7 @@ import './App.css';
 import NewTruck from './components/NewTruck';
 import AllTrucks from './components/AllTrucks';
 import EditTruck from './components/EditTruck';
+import OneTruck from './components/OneTruck';
 
 function App() {
   // const [activeTab, setActiveTab] = useState("dashboard");
@@ -31,6 +32,7 @@ function App() {
         <Router>
           <AllTrucks path='/' />
           <EditTruck path='/truck/:id/edit'/>
+          <OneTruck path='/truck/:id' />
           <NewTruck path="/truck/new" />
         </Router>
     </div>
