@@ -41,7 +41,7 @@ const NewTruck = (props) => {
         <div>
             <h2>New Food Truck</h2>
             <form onSubmit={submitHandler}>
-                <TruckForm truck={truck} changeHandler={changeHandler} errors={errors} action="createTruck"/>
+                <TruckForm truck={truck} changeHandler={changeHandler} errors={errors} action="create"/>
             </form>
         </div>
     )

@@ -3,6 +3,7 @@ import { Router, Link} from '@reach/router';
 import './App.css';
 import NewTruck from './components/NewTruck';
 import AllTrucks from './components/AllTrucks';
+import EditTruck from './components/EditTruck';
 
 function App() {
   // const [activeTab, setActiveTab] = useState("dashboard");
@@ -29,6 +30,7 @@ function App() {
 
         <Router>
           <AllTrucks path='/' />
+          <EditTruck path='/truck/:id/edit'/>
           <NewTruck path="/truck/new" />
         </Router>
     </div>
