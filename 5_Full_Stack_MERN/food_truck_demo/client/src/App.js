@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Router, Link} from '@reach/router';
 import './App.css';
+import NewTruck from './components/NewTruck';
 
 function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -20,11 +21,11 @@ function App() {
           <button className="btn btn-secondary col-sm-2">New Truck</button>
           : <Link className="col-sm-2" onClick={ () => setActiveTab("newtruck") } to="/truck/new"><button className="btn btn-primary">New Truck</button></Link>
         }
+      </div>
 
         <Router>
-          
+          <NewTruck path="/truck/new" />
         </Router>
-      </div>
     </div>
   );
 }
