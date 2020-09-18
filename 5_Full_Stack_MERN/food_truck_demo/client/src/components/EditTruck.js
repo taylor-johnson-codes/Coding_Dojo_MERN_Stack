@@ -22,7 +22,7 @@ const EditTruck = (props) => {
                 setTruck(res.data);
             })
             .catch(err => console.log(err));
-    }, [])
+    }, [props.id])
 
     const submitHandler = e => {
         e.preventDefault();

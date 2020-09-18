@@ -26,7 +26,7 @@ const OneTruck = (props) => {
                 navigate('/');
             }
             let avg = 0;
-            if (res.data.reviews.length != 0) {
+            if (res.data.reviews.length !== 0) {
                 res.data.reviews.forEach(r => {
                     avg += r.rating;
                 });
@@ -36,11 +36,23 @@ const OneTruck = (props) => {
             setTruck(res.data);
         })
         .catch(err => console.log(err));
-    })
+    }, [props.id])
 
     const submitHandler = e => {
         e.preventDefault();
-        console.log(review);
+        // console.log(review);
+        axios.patch('http://localhost:8000/api/trucks/review/${props.id}', review)
+            .then(res => {
+                if(res.data.errors) {
+                    console.log(res.data.errors.reviews.errors);
+                    setErrors(res.data.errors.reviews.errors);
+                } else {
+                    setReview({name: '', review: '', rating: 1})
+                    setTruck(res.data);
+                    setErrors({});
+                }
+            })
+            .catch(err => console.log(err));
     }
 
     const changeHandler = e => {
@@ -59,10 +71,10 @@ const OneTruck = (props) => {
                     <p>Description: {truck.description}</p>
                     <p>Average Rating: {truck.avg} stars</p>
                 </div>
-                <div className="col-sm-12" style={{overflow: 'auto'}}>
+                <div className="col-sm-12" style={{overflow: 'auto', height: '500px'}}>
                     {
                         truck.reviews.map((item, i) =>
-                            <div className="offset-sm-2 col-sm-8">
+                            <div key={i} className="offset-sm-2 col-sm-8">
                                 <p className="col-sm-3">{item.name}</p>
                                 <div className="col-sm-9">
                                     <p>{item.review}</p>
@@ -76,18 +88,33 @@ const OneTruck = (props) => {
                     <form className="row" onSubmit={submitHandler}>
                         <div className="col-sm-7">
                             <div className="form-group row">
+                                {
+                                    errors.name ?
+                                    <span className="offset-sm-4 col-sm-8 text-danger">{errors.name.message}</span>
+                                    : ''
+                                }
                                 <label htmlFor="name" className="col-sm-4">Name: </label>
                                 <input type="text" name='name' onChange={changeHandler} className="col-sm-8 form-control" value={review.name}/>
                             </div>
                             <div className="form-group row">
+                                {
+                                    errors.review ?
+                                        <span className="offset-sm-4 col-sm-8 text-danger">{errors.review.message}</span>
+                                        : ''
+                                }
                                 <label htmlFor="review" className="col-sm-4">Review: </label>
                                 <input type="text" name='review' onChange={changeHandler} className="col-sm-8 form-control" value={review.review} />
                             </div>
                         </div>
                         <div className="col-sm-5">
                             <div className="form-group row">
+                                {
+                                    errors.rating ?
+                                        <span className="offset-sm-4 col-sm-8 text-danger">{errors.rating.message}</span>
+                                        : ''
+                                }
                                 <label htmlFor="rating" className="col-sm-4">Rating: </label>
-                                <select name="rating" className="col-sm-6 offset-sm-1 form-control" onChange={changeHandler}>
+                                <select name="rating" className="col-sm-6 offset-sm-1 form-control" onChange={changeHandler} value={review.rating}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -96,7 +123,8 @@ const OneTruck = (props) => {
                                 </select>
                             </div>
                             <div className="form-group-row">
-                                <button type="button" className="offset-sm-4 col-sm-4 btn btn-secondary" onClick={setReview({name: '', review: '', rating: 1})}>Cancel</button>
+                                <button type="button" className="offset-sm-4 col-sm-4 btn btn-secondary" onClick={() => setReview({ name: '', review: '', rating: 1 })}>Cancel</button>
+                                <button type="submit" className="col-sm-4 btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>

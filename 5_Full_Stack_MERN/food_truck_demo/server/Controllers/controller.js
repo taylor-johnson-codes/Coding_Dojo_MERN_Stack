@@ -39,7 +39,7 @@ module.exports = {
                     return Truck.findOneAndUpdate({ _id: req.params.id }, { $addToSet: { reviews: req.body } }, { new: true, runValidators: true, useFindAndModify: false })
                 } else{
                     // res.status(500).json({ error: 'Name already used for another review on this truck.' });
-                    res.status(500).json({ errors: { name: { message: 'Name already used for another review on this truck; only one review per truck is allowed.' } } });
+                    res.json({ errors: { name: { message: 'Name already used for another review on this truck; only one review per truck is allowed.' } } });
                 }
             })
             .then(data => res.json(data))

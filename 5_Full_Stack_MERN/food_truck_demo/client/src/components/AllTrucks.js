@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, navigate } from '@reach/router';
+import { navigate } from '@reach/router';
 
 
 const AllTrucks = (props) => {
@@ -9,7 +9,7 @@ const AllTrucks = (props) => {
     useEffect( () => {
         axios.get('http://localhost:8000/api/trucks/')
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setAllTrucks(res.data);
             })
             .catch(err => console.log(err));
@@ -21,7 +21,7 @@ const AllTrucks = (props) => {
             {
                 allTrucks.map( (item, i) => {
                     let avg = 0;
-                    if(item.reviews.length != 0) {
+                    if(item.reviews.length !== 0) {
                         item.reviews.forEach(r => {
                             avg += r.rating;
                         });
