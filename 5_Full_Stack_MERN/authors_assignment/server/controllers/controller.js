@@ -8,25 +8,26 @@ module.exports = {
     },
 
     getAll: (req, res) => {
-        Test.find()
+        Author.find()
             .then(data => res.json(data))
             .catch(err => res.json(err));
     },
 
     getOne: (req, res) => {
-        Test.findOne({ _id: req.params.id })
+        Author.findOne({ _id: req.params.id })
             .then(data => res.json(data))
             .catch(err => res.json(err));
     },
 
     updateOne: (req, res) => {
-        Test.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true, useFindAndModify: false })
+        Author.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true, useFindAndModify: false, new: true})
             .then(data => res.json(data))
             .catch(err => res.json(err));
     },
 
     deleteOne: (req, res) => {
-        Test.findOneAndDelete({ _id: req.params.id })
+        // Author.findOneAndDelete({ _id: req.params.id })
+        Author.deleteOne({ _id: req.params.id })
             .then(data => res.json(data))
             .catch(err => res.json(err));
     }
