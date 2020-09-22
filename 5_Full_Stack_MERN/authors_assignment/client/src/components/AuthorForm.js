@@ -4,7 +4,9 @@ import { Link, navigate } from "@reach/router";
 
 const AuthorForm = (props) => {
     const [name, setName] = useState("");
-    const [errors, setErrors] = useState("");
+    const [errors, setErrors] = useState({});
+    
+    // FRONT-END VALIDATIONS COMMENTED OUT
     // const [nameError, setNameError] = useState("");
 
     // const handleName = (e) => {
@@ -18,7 +20,7 @@ const AuthorForm = (props) => {
     
     const createAuthor = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/new", name)
+        axios.post("http://localhost:8000/new", {name})
             .then(res => {
                 if (res.data.errors) {
                     setErrors(res.data.errors);
@@ -27,7 +29,6 @@ const AuthorForm = (props) => {
                 }
             })
             .catch(err => console.log(err));
-        setName("");
     };
 
     return (
@@ -39,7 +40,7 @@ const AuthorForm = (props) => {
                 <div>
                     {
                         errors.name ?
-                        <h3>{errors.name.message}</h3>
+                        <p style={{ color: 'red' }}>{errors.name.message}</p>
                         : ''
                     }
                     {/* {
@@ -47,7 +48,7 @@ const AuthorForm = (props) => {
                         <p style={{ color: 'red' }}>{nameError}</p>
                         : ''
                     } */}
-                    <label htmlFor="name"> Author's Name: </label>
+                    <label htmlFor="name">Author's Name: </label>
                     <input type="text" name="name" onChange={(e) => setName(e.target.value)} value={name} />
                     {/* <input type="text" name="name" onChange={handleName} value={name}/> */}
                 </div>

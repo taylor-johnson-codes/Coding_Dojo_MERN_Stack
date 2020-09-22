@@ -3,6 +3,7 @@ import './App.css';
 import { Router } from '@reach/router';
 import AuthorForm from './components/AuthorForm';
 import AuthorList from './components/AuthorList';
+import UpdateAuthor from './components/UpdateAuthor';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <AuthorList path="/" />
         <AuthorForm path="/new" />
+        <UpdateAuthor path="/update" />
       </Router>
     </div>
   );

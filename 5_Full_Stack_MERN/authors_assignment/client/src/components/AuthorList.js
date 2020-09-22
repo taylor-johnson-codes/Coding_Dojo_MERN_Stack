@@ -30,7 +30,7 @@ const AuthorList = (props) => {
                         allAuthors.map((item, i) =>
                             <tr key={i}>
                                 <td>{item.name}</td>
-                                <td><Link to="/">Edit</Link> ~ <Link to="/">Delete</Link></td>
+                                <td><Link to="/update">Edit</Link> ~ <Link to="/">Delete</Link></td>
                             </tr>
                         )
                     }
