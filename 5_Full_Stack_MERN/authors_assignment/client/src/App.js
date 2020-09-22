@@ -8,11 +8,10 @@ import UpdateAuthor from './components/UpdateAuthor';
 function App() {
   return (
     <div>
-      <h1>Favorite Authors</h1>
       <Router>
         <AuthorList path="/" />
         <AuthorForm path="/new" />
-        <UpdateAuthor path="/update" />
+        <UpdateAuthor path="/update/:id" />
       </Router>
     </div>
   );

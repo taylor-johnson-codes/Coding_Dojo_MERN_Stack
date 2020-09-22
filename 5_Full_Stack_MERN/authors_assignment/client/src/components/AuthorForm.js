@@ -54,6 +54,8 @@ const AuthorForm = (props) => {
                 </div>
                 <input type="submit" value="Submit Author" />
             </form>
+
+            <button onClick={() => navigate("/")}>Cancel</button>
         </div>
     )
 }
