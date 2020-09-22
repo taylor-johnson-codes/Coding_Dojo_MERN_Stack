@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 
 const AllProducts = (props) => {
     const [allProducts, setAllProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/")
-            .then((res) => {
+        axios.get("http://localhost:8000/")
+            .then(res => {
                 setAllProducts(res.data);
                 setLoading(false);
             })
-            .catch((err) => console.log(err));
+            .catch(err => console.log(err));
     }, []);
 
     return (
@@ -25,19 +25,21 @@ const AllProducts = (props) => {
             <table>
                 <thead>
                     <tr>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Description</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {allProducts.map((item, i) => (
+                {
+                    allProducts.map((item, i) => (
                     <tr key={i}>
-                        <td>{item.title}</td>
+                        <td><Link to={`/${item._id}`}>{item.title}</Link></td>
                         <td>${item.price}</td>
                         <td>{item.description}</td>
                     </tr>
-                    ))}
+                    ))
+                }
                 </tbody>
             </table>
         }

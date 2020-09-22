@@ -20,7 +20,7 @@ module.exports = {
     },
 
     updateOne: (req, res) => {
-        Product.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true, useFindAndModify: false })
+        Product.findOneAndUpdate({ _id: req.params.id }, {$set: req.body}, { runValidators: true, useFindAndModify: false, new: true })
             .then(data => res.json(data))
             .catch(err => res.json(err));
     },
