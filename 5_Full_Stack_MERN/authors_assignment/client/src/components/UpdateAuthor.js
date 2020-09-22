@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
-import axios from "axios";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { Link, navigate } from "@reach/router";
 
-const AuthorForm = (props) => {
+const UpdateAuthor = (props) => {
+    // const { id } = props;
     const [name, setName] = useState("");
     const [errors, setErrors] = useState("");
-    // const [nameError, setNameError] = useState("");
 
-    // const handleName = (e) => {
-    //     setName(e.target.value);
-    //     if (e.target.value.length < 1) {
-    //         setNameError("Author's name is required!");
-    //     } else if (e.target.value.length < 3) {
-    //         setNameError("Name must be 3 characters or longer!");
-    //     }
-    // }
-    
-    const createAuthor = (e) => {
+    useEffect(() => {
+        axios.get(`http://localhost:8000/${id}`)
+            .then(res => {
+                setName(res.data.name);
+            })
+    }, [])
+
+    const updateAuthor = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/new", name)
+        axios.patch(`http://localhost:8000/edit/${props.id}`, name)
             .then(res => {
                 if (res.data.errors) {
                     setErrors(res.data.errors);
@@ -30,6 +28,7 @@ const AuthorForm = (props) => {
         setName("");
     };
 
+
     return (
         <div>
             <Link to="/">Home</Link>
@@ -39,8 +38,8 @@ const AuthorForm = (props) => {
                 <div>
                     {
                         errors.name ?
-                        <h3>{errors.name.message}</h3>
-                        : ''
+                            <h3>{errors.name.message}</h3>
+                            : ''
                     }
                     {/* {
                         nameError ?
@@ -51,10 +50,10 @@ const AuthorForm = (props) => {
                     <input type="text" name="name" onChange={(e) => setName(e.target.value)} value={name} />
                     {/* <input type="text" name="name" onChange={handleName} value={name}/> */}
                 </div>
-                <input type="submit" value="Submit Author" />
+                <input type="submit" value="Update Author" />
             </form>
         </div>
     )
 }
 
-export default AuthorForm
+export default UpdateAuthor

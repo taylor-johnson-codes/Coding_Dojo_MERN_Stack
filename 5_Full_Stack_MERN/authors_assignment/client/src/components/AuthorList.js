@@ -6,7 +6,6 @@ const AuthorList = (props) => {
     const [allAuthors, setAllAuthors] = useState([]);
 
     useEffect(() => {
-        // making API request to get data from DB:
         axios.get("http://localhost:8000/")
             .then(res => {
                 setAllAuthors(res.data);
