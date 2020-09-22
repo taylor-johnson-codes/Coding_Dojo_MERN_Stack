@@ -3,25 +3,11 @@ import axios from "axios";
 import { Link, navigate } from "@reach/router";
 
 const ProductForm = (props) => {
-    // const {product, setProduct} = props;
-
-    // const [product, setProduct] = useState({
-    // title: "",
-    // price: "",
-    // description: "",
-    // });
-
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
 
     const [errors, setErrors] = useState({});
-
-  // const [errors, setErrors] = useState({
-  //     title: '',
-  //     price: '',
-  //     description: ''
-  // })
 
     const submitHandler = e => {
         e.preventDefault();
@@ -35,21 +21,11 @@ const ProductForm = (props) => {
                 }
             })
             .catch(err => console.log(err));
-        // setProduct({title: '', price: '', description: ''});
-        // setErrors({title: '', price: '', description: ''});
     }
-
-    // const changeHandler = (e) => {
-    //     setProduct({
-    //         ...product,
-    //         [e.target.name]: e.target.value
-    //     });
-    // }
 
     return (
         <div>
             <h3>Product Manager</h3>
-            {/* <Link to="/">Go Back to All Products</Link> */}
             <form onSubmit={submitHandler}>
                 {
                     errors.title ?

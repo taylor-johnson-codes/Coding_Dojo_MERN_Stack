@@ -13,11 +13,10 @@ const AllProducts = (props) => {
                 setLoading(false);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [allProducts]);
 
     return (
         <div>
-        {/* <Link to="/new">Add Product</Link> */}
         {
             loading ? 
             <p>Loading, please wait...</p>
