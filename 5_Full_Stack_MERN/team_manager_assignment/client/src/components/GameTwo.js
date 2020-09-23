@@ -11,7 +11,7 @@ const GameTwo = (props) => {
             <br/>
 
             <div>
-                <h3>Player Status - Game 1</h3>
+                <h3>Player Status - Game 2</h3>
                 <Link to="/game/1">Game 1</Link> | <Link to="/game/2">Game 2</Link> | <Link to="/game/3">Game 3</Link>
             </div>
             <br/>
