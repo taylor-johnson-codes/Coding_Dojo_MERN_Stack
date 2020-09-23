@@ -6,7 +6,7 @@ const GameTwo = (props) => {
     return (
         <div>
             <div>
-                <Link to="/">Manage Players</Link> | <Link to="/status/game/1">Manager Player Status</Link>
+                <Link to="/">Manage Players</Link> | <Link to="/game/1">Manager Player Status</Link>
             </div>
             <br/>
 

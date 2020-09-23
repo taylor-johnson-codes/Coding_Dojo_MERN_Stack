@@ -39,7 +39,7 @@ const AllPlayers = (props) => {
                     </thead>
                     <tbody>
                         {
-                            players.map((item, i) =>
+                            players.map((item, i) => 
                                 <tr key={i}>
                                     <td><Link to={`/${item._id}`}>{item.name}</Link></td>
                                     <td>{item.position}</td>
