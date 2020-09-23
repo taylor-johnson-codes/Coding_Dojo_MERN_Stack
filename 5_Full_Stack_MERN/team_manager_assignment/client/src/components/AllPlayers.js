@@ -43,7 +43,11 @@ const AllPlayers = (props) => {
                                 <tr key={i}>
                                     <td><Link to={`/${item._id}`}>{item.name}</Link></td>
                                     <td>{item.position}</td>
-                                    <td><button onClick={() => deletePlayer(item._id)}>Delete</button></td>
+                                    <td>
+                                        <button><Link to={`/${item._id}`}>Edit</Link></button> 
+                                        |
+                                        <button onClick={() => deletePlayer(item._id)}>Delete</button>
+                                        </td>
                                 </tr>
                             )
                         }

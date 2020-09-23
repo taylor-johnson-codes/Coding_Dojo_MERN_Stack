@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link, navigate } from "@reach/router";
 
-const PlayerForm = (props) => {
+const UpdatePlayer = (props) => {
     const [name, setName] = useState("");
     const [position, setPosition] = useState("");
     const [errors, setErrors] = useState({});
     
-    const createPlayer = (e) => {
+    useEffect(() => {
+        axios.get(`http://localhost:8000/${props.id}`)
+            .then(res => {
+                setName(res.data.name);
+                setPosition(res.data.position)
+            })
+            .catch(err => console.log(err));
+    }, []);
+
+    const updatePlayer = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/", {name, position})
+        axios.patch(`http://localhost:8000/${props.id}`, {name, position})
             .then(res => {
                 if (res.data.errors) {
                     setErrors(res.data.errors);
@@ -34,7 +43,7 @@ const PlayerForm = (props) => {
             <div>
                 <h4>Add player:</h4>
 
-                <form onSubmit={createPlayer}>
+                <form onSubmit={updatePlayer}>
                     <div>
                         {
                             errors.name ?
@@ -53,13 +62,13 @@ const PlayerForm = (props) => {
                         <label htmlFor="position">Preferred Position: </label>
                         <input type="text" name="position" onChange={(e) => setPosition(e.target.value)} value={position} />
                     </div>
-                    <input type="submit" value="Add Player" />
+                    <input type="submit" value="Update Player" />
                 </form>
-                
-            <button onClick={() => navigate("/")}>Cancel</button>
+
+                <button onClick={() => navigate("/")}>Cancel</button>
             </div>
         </div>
     )
 }
 
-export default PlayerForm
+export default UpdatePlayer
