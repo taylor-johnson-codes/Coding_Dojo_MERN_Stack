@@ -4,8 +4,6 @@ import { Link, navigate } from '@reach/router'
 
 const GameOne = (props) => {
     const [players, setPlayers] = useState([]);
-    const [player, setPlayer] = useState({});
-    const [gameOne, setGameOne] = useState("");
 
     useEffect(() => {
         axios.get('http://localhost:8000/')
@@ -14,37 +12,23 @@ const GameOne = (props) => {
             })
             .catch(err => console.log(err));
 
-    }, []);
+    }, [players]);
 
     const clickHandlerPlaying = (id) => {
-        e.preventDefault();
-        axios.get(`http://localhost:8000/${id}`)
-            .then(res => {
-                setPlayer(res.data);
-            })
+        axios.patch(`http://localhost:8000/${id}`, {gameOne: "playing"})
+            .then(res => console.log(res))
             .catch(err => console.log(err));
-        setGameOne("playing");
-        axios.patch(`http://localhost:8000/${id}`, gameOne)
-            .then(res => res.log(err))
-            .catch(err => console.log(err));
-        setGameOne("");
     };
 
     const clickHandlerNotPlaying = (id) => {
-        e.preventDefault();
-        axios.get(`http://localhost:8000/${id}`)
-            .then(res => {
-                setPlayer(res.data);
-            })
+        axios.patch(`http://localhost:8000/${id}`, {gameOne: "not playing"})
+            .then(res => console.log(res))
             .catch(err => console.log(err));
     };
 
     const clickHandlerUndecided = (id) => {
-        e.preventDefault();
-        axios.get(`http://localhost:8000/${id}`)
-            .then(res => {
-                setPlayer(res.data);
-            })
+        axios.patch(`http://localhost:8000/${id}`, {gameOne: "undecided"})
+            .then(res => console.log(res))
             .catch(err => console.log(err));
     };
 
