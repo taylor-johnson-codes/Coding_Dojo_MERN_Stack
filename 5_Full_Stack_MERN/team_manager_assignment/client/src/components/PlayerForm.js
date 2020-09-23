@@ -23,7 +23,7 @@ const PlayerForm = (props) => {
     return (
         <div>
             <div>
-                <Link to="/">Manage Players</Link> | <Link to="/status/game/1">Manager Player Status</Link>
+                <Link to="/">Manage Players</Link> | <Link to="/game/1">Manager Player Status</Link>
             </div>
             <br/>
 
@@ -55,7 +55,7 @@ const PlayerForm = (props) => {
                     </div>
                     <input type="submit" value="Add Player" />
                 </form>
-                
+
             <button onClick={() => navigate("/")}>Cancel</button>
             </div>
         </div>
